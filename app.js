@@ -8,7 +8,7 @@ const RANGES = { "1W": 7, "1M": 30, "3M": 90, "6M": 180, "YTD": null, "1Y": 365 
 const VARIANTS = {
   original: { label: "–", name: "Original" },
   a: { label: "A", name: "A: Toggle in the account panel" },
-  b: { label: "B", name: "B: Customize the total" },
+  b: { label: "B", name: "B: Customize the total (refined)" },
   c: { label: "C", name: "C: Not counted section" },
   d: { label: "D", name: "D: Quick hide on the row" },
   e: { label: "E", name: "E: Saved views" },
@@ -621,6 +621,21 @@ function openDrawer(account) {
 function renderDrawerExtra(account) {
   const extra = $("drawerExtra");
   extra.innerHTML = "";
+
+  // B: the account only reports its status. The control stays on the total.
+  if (variant === "b") {
+    if (isCounted(account)) return;
+    const line = el(`
+      <div class="status-line">${ICONS.eyeOff}Not counted in your net worth
+        <button class="link-btn">Change</button>
+      </div>`);
+    line.querySelector("button").addEventListener("click", () => {
+      closeDrawer();
+      openCustomizeSheet();
+    });
+    extra.append(line);
+    return;
+  }
   if (variant !== "a") return;
 
   const row = el(`
@@ -673,9 +688,15 @@ $("sort").addEventListener("change", (e) => {
   renderAccounts();
 });
 
+// B: Customize is a page action, top right, like Account details on
+// other Wealthsimple pages. On mobile it is a circle button in the header.
 if (variant === "b") {
-  $("customizeBtn").hidden = false;
-  $("customizeBtn").addEventListener("click", openCustomizeSheet);
+  const desktop = el(`<button class="pill">${ICONS.sliders}Customize</button>`);
+  const mobile = el(`<button class="back-btn" aria-label="Customize your net worth">${ICONS.sliders}</button>`);
+  desktop.addEventListener("click", openCustomizeSheet);
+  mobile.addEventListener("click", openCustomizeSheet);
+  $("pageActions").append(desktop);
+  $("mobileActions").append(mobile);
 }
 
 // ---------- Go ----------
