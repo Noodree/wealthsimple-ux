@@ -724,7 +724,7 @@ body.is-hidden .money { filter: blur(7px); user-select: none; }
   position: fixed;
   z-index: 40;
   left: 50%;
-  bottom: 104px;
+  bottom: 32px;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -740,41 +740,34 @@ body.is-hidden .money { filter: blur(7px); user-select: none; }
 .toast[hidden] { display: none; }
 .toast button { border: 0; background: none; color: #9cc1ff; font-weight: 700; }
 
-/* Prototype switcher (not part of the design) */
+/* Prototype switcher (not part of the design): a slim column in the
+   sidebar, below the nav icons, so it never covers the page. */
 .switcher {
   position: fixed;
   z-index: 50;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
+  left: 12px;
+  top: 330px;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 8px 16px 8px 8px;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
   border-radius: 1000px;
   background: #3a2a8c;
-  color: #fff;
-  font-size: 13px;
-  box-shadow: 0 8px 24px rgba(58, 42, 140, 0.35);
-  white-space: nowrap;
 }
-.sw-buttons { display: flex; gap: 4px; }
 .sw-btn {
-  min-width: 32px;
+  width: 32px;
   height: 32px;
-  padding: 0 10px;
   display: grid;
   place-items: center;
-  border-radius: 1000px;
+  border-radius: 50%;
   color: #fff;
   text-decoration: none;
+  font-size: 12px;
   font-weight: 700;
   background: rgba(255, 255, 255, 0.12);
 }
 .sw-btn:hover { background: rgba(255, 255, 255, 0.24); }
 .sw-btn.is-active { background: #fff; color: #3a2a8c; }
-.sw-hint b { font-weight: 700; margin-right: 4px; }
-.sw-hint { opacity: 0.9; }
 
 @media (max-width: 720px) {
   .row-action.d-eye { display: none; }
@@ -798,14 +791,8 @@ body.is-hidden .money { filter: blur(7px); user-select: none; }
   .switcher {
     position: static;
     transform: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
+    flex-direction: row;
+    justify-content: space-between;
     margin: 8px 16px 0;
-    padding: 10px;
-    border-radius: 16px;
-    white-space: normal;
   }
-  .sw-buttons { justify-content: space-between; }
-  .sw-hint { padding: 0 4px; font-size: 12px; }
 }

@@ -18,4 +18,4 @@ Make the window narrower than 720px to see the mobile layout.
 ## Prototypes: leaving accounts out of net worth
 
 Open `prototypes.html` for five ways to let someone leave accounts (like a child's RESP) out of their net worth.
-Each one is the same page with `?v=a` to `?v=e` on the URL, and a purple bar at the bottom switches between them.
+Each one is the same page with `?v=a` to `?v=e` on the URL, and a slim purple bar on the left switches between them.

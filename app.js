@@ -6,12 +6,12 @@ const USD_TO_CAD = 1.38;
 const RANGES = { "1W": 7, "1M": 30, "3M": 90, "6M": 180, "YTD": null, "1Y": 365 };
 
 const VARIANTS = {
-  original: { label: "Original", name: "Original", hint: "The page as it is today" },
-  a: { label: "A", name: "Toggle in the account panel", hint: "Open an RESP and switch off Include in net worth" },
-  b: { label: "B", name: "Customize the total", hint: "Click the sliders next to the total" },
-  c: { label: "C", name: "Not counted section", hint: "Use the ⋯ on an account to move it" },
-  d: { label: "D", name: "Quick hide on the row", hint: "Hover a row and click the eye. On mobile, swipe left" },
-  e: { label: "E", name: "Saved views", hint: "Click + New view above the total" },
+  original: { label: "–", name: "Original" },
+  a: { label: "A", name: "A: Toggle in the account panel" },
+  b: { label: "B", name: "B: Customize the total" },
+  c: { label: "C", name: "C: Not counted section" },
+  d: { label: "D", name: "D: Quick hide on the row" },
+  e: { label: "E", name: "E: Saved views" },
 };
 const requested = new URLSearchParams(location.search).get("v");
 const variant = VARIANTS[requested] ? requested : "original";
@@ -656,15 +656,9 @@ document.addEventListener("keydown", (e) => {
 // ---------- Prototype switcher ----------
 
 function renderSwitcher() {
-  const v = VARIANTS[variant];
-  $("switcher").innerHTML = `
-    <div class="sw-buttons">
-      ${Object.entries(VARIANTS)
-        .map(([key, item]) => `<a class="sw-btn${key === variant ? " is-active" : ""}" href="?v=${key}" title="${item.name}">${item.label}</a>`)
-        .join("")}
-      <a class="sw-btn" href="prototypes.html" title="All prototypes">All</a>
-    </div>
-    <div class="sw-hint"><b>${v.name}</b>${variant === "original" ? "" : v.hint}</div>`;
+  $("switcher").innerHTML = Object.entries(VARIANTS)
+    .map(([key, item]) => `<a class="sw-btn${key === variant ? " is-active" : ""}" href="?v=${key}" title="${item.name}">${item.label}</a>`)
+    .join("") + `<a class="sw-btn" href="prototypes.html" title="All prototypes">All</a>`;
 }
 
 // ---------- Controls ----------
