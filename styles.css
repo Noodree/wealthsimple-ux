@@ -23,7 +23,6 @@
     0 6.5px 6px 0.5px rgba(0, 0, 0, 0.016);
 
   --chart-line: #2f7d3a;
-  --chart-fill: rgba(47, 125, 58, 0.12);
   --notification: #c02416;
 
   --sidebar-w: 64px;
@@ -141,7 +140,6 @@ svg.filled { fill: currentColor; stroke: none; }
 .chart { position: relative; height: 220px; margin-top: 32px; border-bottom: 1px solid var(--divider); }
 .chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .chart .line { stroke: var(--chart-line); stroke-width: 1.6; fill: none; }
-.chart .area { stroke: none; }
 .chart .hover-line { stroke: rgba(0, 0, 0, 0.2); stroke-width: 1; }
 .chart-tip {
   position: absolute;
@@ -359,7 +357,6 @@ svg.filled { fill: currentColor; stroke: none; }
 .drawer-type { font-size: 14px; font-weight: 500; color: var(--text-muted); }
 .drawer-name { font-size: 19px; font-weight: 700; margin-top: 2px; }
 .drawer-balance { font-size: 34px; font-weight: 700; margin-top: 28px; letter-spacing: -0.4px; }
-.drawer .chart .area { display: none; }
 .drawer-stats { margin: 48px 0 0; }
 .drawer-stats div { display: flex; justify-content: space-between; padding: 12px 0; font-size: 14px; }
 .drawer-stats div + div { border-top: 1px solid var(--divider); }

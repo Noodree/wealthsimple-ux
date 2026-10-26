@@ -44,8 +44,6 @@ const el = (html) => {
 
 // ---------- Chart ----------
 
-let chartId = 0;
-
 function drawChart(container, values) {
   const w = 760;
   const h = 200;
@@ -57,17 +55,10 @@ function drawChart(container, values) {
   const y = (v) => pad + (1 - (v - min) / span) * (h - pad * 2);
 
   const points = values.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`);
-  const id = `dots-${chartId++}`;
   const last = values.length - 1;
 
   container.innerHTML = `
     <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-      <defs>
-        <pattern id="${id}" width="4" height="4" patternUnits="userSpaceOnUse">
-          <circle cx="1" cy="1" r="0.6" style="fill:var(--chart-line)" opacity="0.22"/>
-        </pattern>
-      </defs>
-      <polygon class="area" style="fill:url(#${id})" points="0,${h} ${points.join(" ")} ${w},${h}"/>
       <polyline class="line" vector-effect="non-scaling-stroke" points="${points.join(" ")}"/>
       <line class="hover-line" vector-effect="non-scaling-stroke" x1="0" x2="0" y1="0" y2="${h}" visibility="hidden"/>
     </svg>
