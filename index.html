@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Net worth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Desktop sidebar -->
+  <nav class="sidebar" aria-label="Main">
+    <a class="logo" href="#" aria-label="Home">W</a>
+    <div class="sidebar-icons">
+      <button class="nav-icon" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="nav-icon" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20H4z"/></svg></button>
+      <button class="nav-icon is-active" aria-label="Net worth"><svg viewBox="0 0 24 24"><path d="M4 20V10M9 20V6M14 20v-8M19 20V8"/></svg></button>
+      <button class="nav-icon" aria-label="Accounts"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h.01M9 13h.01"/></svg></button>
+      <button class="nav-icon" aria-label="Transfer"><svg viewBox="0 0 24 24"><path d="M5 8h14l-3-3M19 16H5l3 3"/></svg></button>
+      <button class="nav-icon" aria-label="Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></button>
+    </div>
+    <div class="sidebar-bottom">
+      <button class="nav-icon has-dot" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20h4"/></svg></button>
+      <button class="nav-icon" aria-label="Rewards"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M12 9v11M4 13h16M12 9c-2-4-6-3-5 0M12 9c2-4 6-3 5 0"/></svg></button>
+      <div class="avatar">A</div>
+    </div>
+  </nav>
+
+  <!-- Mobile top bar -->
+  <header class="mobile-header">
+    <button class="back-btn" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>
+    <h1>Net worth</h1>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Net worth</h1>
+
+    <div class="layout">
+      <div class="content">
+
+        <!-- Total + chart -->
+        <section class="summary">
+          <div class="total-row">
+            <span class="total" id="total"></span>
+            <button class="hide-btn" id="hideBtn" aria-label="Hide balances">
+              <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 4l16 16"/></svg>
+            </button>
+          </div>
+          <div class="change" id="change"></div>
+          <div class="chart" id="chart"></div>
+          <div class="ranges" id="ranges" role="tablist"></div>
+        </section>
+
+        <!-- Breakdown -->
+        <section>
+          <div class="section-head">
+            <h2>Net worth breakdown</h2>
+            <div class="head-actions">
+              <button class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>Add manually</button>
+              <button class="pill"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>Link accounts<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+          </div>
+          <div class="card breakdown">
+            <span class="card-label">Asset breakdown</span>
+            <div class="bar" id="bar"></div>
+            <ul class="legend" id="legend"></ul>
+          </div>
+        </section>
+
+        <!-- Mobile-only promo + tiles -->
+        <div class="mobile-only">
+          <div class="card promo promo-mobile">
+            <div class="promo-art" aria-hidden="true"></div>
+            <div class="promo-text">
+              <p class="promo-title">Build wealth, together</p>
+              <p class="promo-body">Create a household to get a full view of your shared finances.</p>
+            </div>
+            <button class="round-btn" aria-label="Create household"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+          </div>
+          <div class="tiles">
+            <div><button class="tile" aria-label="Link new account"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></button><span>Link new account</span></div>
+            <div><button class="tile" aria-label="Add manually"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><span>Add manually</span></div>
+          </div>
+        </div>
+
+        <!-- Accounts -->
+        <section>
+          <div class="section-head">
+            <h2>Accounts</h2>
+            <label class="pill pill-small select">
+              <select id="sort" aria-label="Sort accounts">
+                <option value="type">Account type</option>
+                <option value="balance">Balance (high to low)</option>
+              </select>
+              <svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+            </label>
+          </div>
+          <div id="accounts"></div>
+        </section>
+      </div>
+
+      <!-- Desktop promo -->
+      <aside class="aside">
+        <div class="card promo">
+          <div class="promo-art" aria-hidden="true"></div>
+          <div class="promo-text">
+            <p class="promo-title">Unlock more as a household</p>
+            <p class="promo-body">Manage your money together, and share your status and benefits.</p>
+            <a class="promo-link" href="#">Create your household <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Mobile bottom tab bar -->
+  <nav class="tabbar" aria-label="Tabs">
+    <button class="tab is-active" aria-label="Home"><svg viewBox="0 0 24 24" class="filled"><path d="M4 10.5 12 4l8 6.5V20h-5v-5h-6v5H4z"/></svg></button>
+    <button class="tab" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button class="tab" aria-label="Transfer"><svg viewBox="0 0 24 24"><path d="M5 8h14l-3-3M19 16H5l3 3"/></svg></button>
+    <button class="tab" aria-label="Activity"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></button>
+  </nav>
+
+  <!-- Account drawer -->
+  <div class="overlay" id="overlay" hidden>
+    <div class="backdrop" id="backdrop"></div>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerName">
+      <button class="close-btn" id="closeDrawer" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <p class="drawer-type" id="drawerType"></p>
+      <h3 class="drawer-name" id="drawerName"></h3>
+      <p class="drawer-balance" id="drawerBalance"></p>
+      <div class="chart chart-small" id="drawerChart"></div>
+      <div class="ranges" id="drawerRanges"></div>
+      <dl class="drawer-stats" id="drawerStats"></dl>
+      <div class="drawer-actions">
+        <button class="pill">Edit</button>
+        <button class="btn-dark">View details</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
