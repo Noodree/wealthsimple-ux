@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1470" height="800" viewBox="0 0 1470 800" font-family="Inter, 'Wealthsimple Sans', -apple-system, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#1a1a1a"/>
+  </marker>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+    <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.06"/>
+  </filter>
+</defs>
+<rect width="1470" height="800" fill="#F2F2F2"/>
+<text x="40" y="62" font-size="28" font-weight="700" fill="#000">Leaving accounts out of net worth</text>
+<text x="40" y="94" font-size="16" fill="#555">Page flow for option B. One control, on the Net worth page. The new total shows everywhere net worth appears.</text>
+
+<rect x="40" y="200" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#FFFFFF" stroke-width="1" filter="url(#shadow)"/>
+<text x="60" y="234" font-size="13" fill="#777">Entry point</text>
+<text x="60" y="266" font-size="19" font-weight="700" fill="#000">Home</text>
+<text x="60" y="298" font-size="14" fill="#333">Net worth card</text>
+<text x="60" y="320" font-size="14" fill="#333">Tap to open the full page</text>
+<rect x="410" y="200" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#FFFFFF" stroke-width="1" filter="url(#shadow)"/>
+<text x="430" y="234" font-size="13" fill="#777">Existing page</text>
+<text x="430" y="266" font-size="19" font-weight="700" fill="#000">Net worth</text>
+<text x="430" y="298" font-size="14" fill="#333">Total, chart, breakdown, accounts</text>
+<text x="430" y="320" font-size="14" fill="#333">Desktop: Customize, top right</text>
+<text x="430" y="342" font-size="14" fill="#333">Mobile: sliders button in header</text>
+<rect x="780" y="200" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#3B71CC" stroke-width="2.5" filter="url(#shadow)"/>
+<rect x="800" y="218" width="44" height="22" rx="11" fill="#3B71CC"/>
+<text x="822" y="233" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">New</text>
+<text x="854" y="234" font-size="13" fill="#777">Dialog or sheet</text>
+<text x="800" y="266" font-size="19" font-weight="700" fill="#000">Customize your net worth</text>
+<text x="800" y="298" font-size="14" fill="#333">Checklist of every account</text>
+<text x="800" y="320" font-size="14" fill="#333">Live preview of the new total</text>
+<text x="800" y="342" font-size="14" fill="#333">Desktop: dialog</text>
+<text x="800" y="364" font-size="14" fill="#333">Mobile: bottom sheet</text>
+<rect x="1150" y="200" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#FFFFFF" stroke-width="1" filter="url(#shadow)"/>
+<text x="1170" y="234" font-size="13" fill="#777">Existing page, updated</text>
+<text x="1170" y="266" font-size="19" font-weight="700" fill="#000">Net worth, filtered</text>
+<text x="1170" y="298" font-size="14" fill="#333">Total, chart, breakdown recalculated</text>
+<text x="1170" y="320" font-size="14" fill="#333">“Excludes 2 accounts” chip</text>
+<text x="1170" y="342" font-size="14" fill="#333">Left-out accounts tagged</text>
+<text x="1170" y="364" font-size="14" fill="#333">“Not counted”</text>
+<rect x="780" y="520" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#FFFFFF" stroke-width="1" filter="url(#shadow)"/>
+<text x="800" y="554" font-size="13" fill="#777">Existing page, new line</text>
+<text x="800" y="586" font-size="19" font-weight="700" fill="#000">Account</text>
+<text x="800" y="618" font-size="14" fill="#333">Desktop: side panel</text>
+<text x="800" y="640" font-size="14" fill="#333">Mobile: account page</text>
+<text x="800" y="662" font-size="14" fill="#333">Status: “Not counted in your</text>
+<text x="800" y="684" font-size="14" fill="#333">net worth” with Change link</text>
+<rect x="1150" y="520" width="280" height="190" rx="16" fill="#F9F9F9" stroke="#FFFFFF" stroke-width="1" filter="url(#shadow)"/>
+<text x="1170" y="554" font-size="13" fill="#777">Existing card, updated</text>
+<text x="1170" y="586" font-size="19" font-weight="700" fill="#000">Home</text>
+<text x="1170" y="618" font-size="14" fill="#333">Same filtered total</text>
+<text x="1170" y="640" font-size="14" fill="#333">Same chip</text>
+<text x="1170" y="662" font-size="14" fill="#333">Opens Net worth</text>
+<path d="M320 295.0 L404 295.0" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="346" y="265.0" width="38" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="365" y="282.0" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Tap</text>
+<path d="M690 295.0 L774 295.0" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="694" y="265.0" width="83" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="735" y="282.0" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Customize</text>
+<path d="M1060 295.0 L1144 295.0" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1082" y="265.0" width="46" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="1105" y="282.0" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Done</text>
+<path d="M860 200 C860 130, 610 130, 610 194" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="668" y="132" width="134" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="735" y="149" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Close, no change</text>
+<path d="M1290 200 C1290 130, 990 130, 990 194" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1088" y="132" width="105" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="1140" y="149" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Tap the chip</text>
+<path d="M1210 390 L1210 445 L1000 445 L1000 514" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="1045" y="429" width="120" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="1105" y="446" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Tap an account</text>
+<path d="M850 520 L850 396" fill="none" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="820" y="444" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="850" y="461" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Change</text>
+<path d="M1360 390 L1360 514" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+<rect x="1315" y="474" width="90" height="24" rx="12" fill="#FFFFFF" stroke="#E2E2E2"/>
+<text x="1360" y="491" font-size="13" font-weight="500" fill="#1a1a1a" text-anchor="middle">Same total</text>
+<rect x="40" y="744" width="26" height="20" rx="6" fill="#F9F9F9" stroke="#3B71CC" stroke-width="2.5"/>
+<text x="76" y="760" font-size="14" fill="#333">New screen</text>
+<path d="M190 754 L240 754" stroke="#1a1a1a" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="252" y="760" font-size="14" fill="#333">User action</text>
+<path d="M370 754 L420 754" stroke="#1a1a1a" stroke-width="1.8" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+<text x="432" y="760" font-size="14" fill="#333">Same data shown elsewhere</text>
+</svg>
