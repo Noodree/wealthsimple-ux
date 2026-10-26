@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exclude accounts prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .launcher { max-width: 980px; margin: 0 auto; padding: 56px 24px 80px; }
+    .launcher h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.3px; }
+    .problem { max-width: 640px; margin-top: 12px; font-size: 16px; line-height: 24px; color: var(--text-muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 40px; }
+    .proto { display: flex; flex-direction: column; gap: 10px; padding: 24px; }
+    .proto .letter {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border-radius: 50%; background: #3a2a8c; color: #fff; font-weight: 700;
+    }
+    .proto.is-original .letter { background: rgba(0, 0, 0, 0.08); color: var(--text); }
+    .proto h2 { font-size: 18px; font-weight: 700; margin-top: 4px; }
+    .proto p { font-size: 14px; line-height: 20px; color: var(--text-muted); }
+    .proto .try { color: var(--text); }
+    .proto .try b { font-weight: 700; }
+    .proto .btn-dark { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; text-decoration: none; }
+    .proto .meta { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proto .tag { margin: 0; }
+    .tip { margin-top: 32px; font-size: 14px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <main class="launcher">
+    <h1>Leave accounts out of net worth</h1>
+    <p class="problem">“When I look at my net worth, I want to ignore my kids’ RESPs. That money isn’t mine, so I don’t want it in the total.” Five ways to solve it, each one a working prototype.</p>
+
+    <div class="grid">
+      <article class="card proto">
+        <span class="letter">A</span>
+        <h2>Toggle in the account panel</h2>
+        <p>An “Include in net worth” switch sits with each account’s details. Left-out accounts stay in the list, greyed out.</p>
+        <p class="try"><b>Try it:</b> open Alex’s RESP and turn the switch off.</p>
+        <a class="btn-dark" href="index.html?v=a">Open prototype A</a>
+      </article>
+
+      <article class="card proto">
+        <span class="letter">B</span>
+        <div class="meta"><span class="tag">My lean</span></div>
+        <h2>Customize the total</h2>
+        <p>A control next to the total opens a checklist of every account, with a live preview. A chip shows the total is filtered.</p>
+        <p class="try"><b>Try it:</b> click the sliders next to the total and untick both RESPs.</p>
+        <a class="btn-dark" href="index.html?v=b">Open prototype B</a>
+      </article>
+
+      <article class="card proto">
+        <span class="letter">C</span>
+        <h2>Not counted section</h2>
+        <p>Left-out accounts move to a dashed “Not counted” section at the bottom of the list, so the reason for a lower total is always visible.</p>
+        <p class="try"><b>Try it:</b> use the ⋯ on an RESP and choose Move to Not counted.</p>
+        <a class="btn-dark" href="index.html?v=c">Open prototype C</a>
+      </article>
+
+      <article class="card proto">
+        <span class="letter">D</span>
+        <h2>Quick hide on the row</h2>
+        <p>An eye icon on hover (desktop) or a swipe (mobile) removes an account in one move, with an undo toast.</p>
+        <p class="try"><b>Try it:</b> hover an RESP and click the eye. Narrow the window and swipe a row left.</p>
+        <a class="btn-dark" href="index.html?v=d">Open prototype D</a>
+      </article>
+
+      <article class="card proto">
+        <span class="letter">E</span>
+        <h2>Saved views</h2>
+        <p>Name a set of accounts as a view, like “My money”, and switch between it and All accounts. Chart, bar and list follow the view.</p>
+        <p class="try"><b>Try it:</b> click + New view, untick the RESPs, name it and save.</p>
+        <a class="btn-dark" href="index.html?v=e">Open prototype E</a>
+      </article>
+
+      <article class="card proto is-original">
+        <span class="letter">–</span>
+        <h2>Original</h2>
+        <p>The page as it is today, with no way to leave accounts out. Use it as the baseline.</p>
+        <a class="btn-dark" href="index.html?v=original">Open original</a>
+      </article>
+    </div>
+
+    <p class="tip">Every prototype has a purple bar at the bottom to switch between them. Make the window narrower than 720px to see the mobile version. Reloading resets your changes.</p>
+  </main>
+</body>
+</html>

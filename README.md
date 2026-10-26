@@ -14,3 +14,8 @@ All the numbers are made up.
 
 Double-click `index.html`, or run `python3 -m http.server 8765` in this folder and go to http://localhost:8765.
 Make the window narrower than 720px to see the mobile layout.
+
+## Prototypes: leaving accounts out of net worth
+
+Open `prototypes.html` for five ways to let someone leave accounts (like a child's RESP) out of their net worth.
+Each one is the same page with `?v=a` to `?v=e` on the URL, and a purple bar at the bottom switches between them.

@@ -10,6 +10,9 @@
 </head>
 <body>
 
+  <!-- Prototype switcher: not part of the design -->
+  <div class="switcher" id="switcher"></div>
+
   <!-- Desktop sidebar -->
   <nav class="sidebar" aria-label="Main">
     <a class="logo" href="#" aria-label="Home">W</a>
@@ -42,13 +45,18 @@
 
         <!-- Total + chart -->
         <section class="summary">
+          <div class="view-bar" id="viewBar"></div>
           <div class="total-row">
             <span class="total" id="total"></span>
             <button class="hide-btn" id="hideBtn" aria-label="Hide balances">
               <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 4l16 16"/></svg>
             </button>
+            <button class="hide-btn" id="customizeBtn" aria-label="Customize your net worth" hidden>
+              <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+            </button>
           </div>
           <div class="change" id="change"></div>
+          <div class="total-note" id="totalNote"></div>
           <div class="chart" id="chart"></div>
           <div class="ranges" id="ranges" role="tablist"></div>
         </section>
@@ -134,12 +142,21 @@
       <div class="chart chart-small" id="drawerChart"></div>
       <div class="ranges" id="drawerRanges"></div>
       <dl class="drawer-stats" id="drawerStats"></dl>
+      <div id="drawerExtra"></div>
       <div class="drawer-actions">
         <button class="pill">Edit</button>
         <button class="btn-dark">View details</button>
       </div>
     </aside>
   </div>
+
+  <!-- Account picker sheet (prototypes B and E) -->
+  <div class="overlay" id="sheetOverlay" hidden>
+    <div class="backdrop" data-close></div>
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden></div>
 
   <script src="data.js"></script>
   <script src="app.js"></script>

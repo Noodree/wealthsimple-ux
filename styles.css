@@ -254,25 +254,39 @@ svg.filled { fill: currentColor; stroke: none; }
 .group-body { border-top: 1px solid var(--divider); padding: 12px 0 16px; }
 .group.is-collapsed .group-body { display: none; }
 
+/* Each account is a row: a foreground (the clickable account plus any
+   action button) that can slide to reveal a swipe action behind it. */
+.account-row { position: relative; margin: 0 8px; border-radius: 8px; overflow: hidden; }
+.row-fg {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--card-bg);
+  transition: transform 0.2s ease-out;
+  touch-action: pan-y;
+}
+.row-fg:hover { background: #f2f2f2; }
 .account {
-  width: calc(100% - 16px);
-  margin: 0 8px;
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   height: 78px;
   padding: 0 18px;
   border: 0;
-  border-radius: 8px;
   background: none;
   text-align: left;
 }
-.account:hover { background: rgba(0, 0, 0, 0.035); }
 .account-name { font-weight: 700; font-size: 15px; line-height: 20px; }
 .account-type { font-size: 12px; line-height: 16px; letter-spacing: 0.18px; color: var(--text-subtle); margin-top: 2px; }
 .account .amount { margin-left: auto; font-weight: 700; font-size: 15px; }
 
 /* Flat list, used when sorting by balance */
-.account-card { height: 104px; margin: 0; width: 100%; padding: 0 31px; }
+.account-row.card { margin: 0; }
+.account-row.card .row-fg { border-radius: var(--radius-card); }
+.account-card { height: 104px; padding: 0 31px; }
 
 /* Empty group: dashed, with a + button */
 .group-empty {
@@ -494,4 +508,304 @@ body.is-hidden .money { filter: blur(7px); user-select: none; }
   .tab.is-active { background: rgba(0, 0, 0, 0.07); color: var(--text); }
 
   .drawer { width: 100%; border-radius: 0 0 24px 24px; }
+}
+
+/* =========================================================
+   Exclude-accounts prototypes (variants A to E)
+   ========================================================= */
+
+/* Accounts left out of the total */
+.is-excluded .account-name,
+.is-excluded .account .amount { color: var(--text-subtle); }
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 1000px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+  vertical-align: 1px;
+}
+
+/* Icon button inside a row (D: eye, C: more) */
+.row-action {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-muted);
+  opacity: 0;
+}
+.row-action svg { width: 18px; height: 18px; }
+.row-action:hover { background: rgba(0, 0, 0, 0.07); color: var(--text); }
+.row-fg:hover .row-action,
+.row-action:focus-visible,
+.is-excluded .row-action,
+.row-action.always { opacity: 1; }
+
+/* D: swipe action revealed behind the row on mobile */
+.swipe-action {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 110px;
+  border: 0;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  visibility: hidden;
+}
+.account-row.show-swipe .swipe-action { visibility: visible; }
+
+/* B and E: total note under the change line */
+.total-note { margin-top: 10px; }
+.total-note:empty { display: none; }
+.chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 1000px;
+  background: rgba(59, 113, 204, 0.12);
+  color: #23508f;
+  font-size: 12px;
+  font-weight: 700;
+}
+.chip-btn svg { width: 14px; height: 14px; }
+.note-text { font-size: 13px; color: var(--text-muted); }
+
+/* E: saved views */
+.view-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.view-bar:empty { display: none; }
+.view-pill {
+  height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 1000px;
+  background: #fff;
+  box-shadow: var(--pill-shadow);
+  font-size: 13px;
+  font-weight: 500;
+}
+.view-pill.is-active { background: #000; color: #fff; box-shadow: none; }
+.view-pill.is-new { background: none; box-shadow: none; border: 1.5px dashed rgba(0, 0, 0, 0.18); color: var(--text-muted); }
+.view-edit { border: 0; background: none; font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: underline; }
+
+/* C: Not counted section and row menu */
+.not-counted {
+  padding: 22px 8px 12px;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-card);
+}
+.not-counted .row-fg { background: none; }
+.not-counted .row-fg:hover { background: rgba(0, 0, 0, 0.035); }
+.nc-head { display: flex; align-items: flex-start; gap: 12px; padding: 0 18px 12px; }
+.nc-title { font-weight: 700; font-size: 16px; }
+.nc-sub { font-size: 12px; color: var(--text-subtle); margin-top: 4px; }
+.nc-head .amount { margin-left: auto; font-weight: 700; font-size: 16px; color: var(--text-subtle); }
+.group-note { padding: 18px 26px 22px; font-size: 13px; color: var(--text-subtle); }
+
+.menu {
+  position: absolute;
+  z-index: 30;
+  width: 210px;
+  padding: 6px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+.menu button {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+}
+.menu button:hover { background: rgba(0, 0, 0, 0.05); }
+
+/* A: include switch in the account panel */
+.include-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+  padding: 14px 0;
+  border-top: 1px solid var(--divider);
+}
+.include-title { font-weight: 700; font-size: 14px; }
+.include-sub { font-size: 12px; line-height: 16px; color: var(--text-muted); margin-top: 3px; }
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 26px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 1000px;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background 0.2s;
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s;
+}
+.switch[aria-checked="true"] { background: #000; }
+.switch[aria-checked="true"]::after { transform: translateX(18px); }
+
+/* B and E: account picker sheet */
+.sheet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+.sheet-head { display: flex; align-items: center; padding: 22px 24px 4px; }
+.sheet-head h3 { font-size: 19px; font-weight: 700; }
+.sheet-head .close-btn { position: static; margin-left: auto; }
+.sheet-body { padding: 0 24px; overflow-y: auto; }
+.sheet-preview {
+  margin: 12px 0 8px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--page-bg);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.sheet-preview strong { display: block; margin-top: 2px; font-size: 22px; color: var(--text); }
+.sheet-group { margin-top: 16px; font-size: 12px; font-weight: 700; color: var(--text-subtle); letter-spacing: 0.3px; }
+.check-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--divider); cursor: pointer; }
+.check-row input { width: 18px; height: 18px; accent-color: #000; margin: 0; }
+.check-row .amount { margin-left: auto; font-weight: 500; }
+.check-row.is-off .account-name, .check-row.is-off .amount { color: var(--text-subtle); }
+.name-field { display: block; margin-top: 14px; font-size: 13px; font-weight: 500; }
+.name-field input {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 6px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 15px;
+}
+.field-error { margin-top: 6px; font-size: 12px; color: var(--notification); }
+.sheet-foot { display: flex; justify-content: space-between; gap: 12px; padding: 16px 24px 20px; border-top: 1px solid var(--divider); }
+
+/* Undo toast */
+.toast {
+  position: fixed;
+  z-index: 40;
+  left: 50%;
+  bottom: 104px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px 12px 18px;
+  border-radius: 14px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.toast[hidden] { display: none; }
+.toast button { border: 0; background: none; color: #9cc1ff; font-weight: 700; }
+
+/* Prototype switcher (not part of the design) */
+.switcher {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 1000px;
+  background: #3a2a8c;
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgba(58, 42, 140, 0.35);
+  white-space: nowrap;
+}
+.sw-buttons { display: flex; gap: 4px; }
+.sw-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 1000px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+}
+.sw-btn:hover { background: rgba(255, 255, 255, 0.24); }
+.sw-btn.is-active { background: #fff; color: #3a2a8c; }
+.sw-hint b { font-weight: 700; margin-right: 4px; }
+.sw-hint { opacity: 0.9; }
+
+@media (max-width: 720px) {
+  .row-action.d-eye { display: none; }
+  .is-excluded .row-action.d-eye { display: grid; }
+  .row-fg { user-select: none; -webkit-user-select: none; }
+  .not-counted { padding: 18px 0 8px; }
+
+  .sheet {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    max-height: 88%;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .toast { bottom: 100px; }
+
+  .switcher {
+    position: static;
+    transform: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin: 8px 16px 0;
+    padding: 10px;
+    border-radius: 16px;
+    white-space: normal;
+  }
+  .sw-buttons { justify-content: space-between; }
+  .sw-hint { padding: 0 4px; font-size: 12px; }
 }
