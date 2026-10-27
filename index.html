@@ -10,8 +10,6 @@
 </head>
 <body>
 
-  <!-- Prototype switcher: not part of the design -->
-  <div class="switcher" id="switcher"></div>
 
   <!-- Desktop sidebar -->
   <nav class="sidebar" aria-label="Main">
@@ -41,7 +39,10 @@
   <main class="page">
     <div class="page-head">
       <h1 class="page-title">Net worth</h1>
-      <div class="page-actions" id="pageActions"></div>
+      <div class="page-actions" id="pageActions">
+        <button class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>Add manually</button>
+        <button class="pill"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>Link accounts<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
     </div>
 
     <div class="layout">
@@ -66,10 +67,6 @@
         <section>
           <div class="section-head">
             <h2>Net worth breakdown</h2>
-            <div class="head-actions">
-              <button class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>Add manually</button>
-              <button class="pill"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>Link accounts<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
-            </div>
           </div>
           <div class="card breakdown">
             <span class="card-label">Asset breakdown</span>

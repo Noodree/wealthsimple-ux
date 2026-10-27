@@ -1,6 +1,6 @@
 // Renders the net worth page from the data in data.js.
-// Add ?v=a to ?v=e to the URL to try a design for leaving accounts
-// out of the net worth (see prototypes.html).
+// Shows design B by default. Add ?v=a, c, d, e or original to the URL to
+// see the other explorations (see prototypes.html).
 
 const USD_TO_CAD = 1.38;
 const RANGES = { "1W": 7, "1M": 30, "3M": 90, "6M": 180, "YTD": null, "1Y": 365 };
@@ -14,7 +14,7 @@ const VARIANTS = {
   e: { label: "E", name: "E: Saved views" },
 };
 const requested = new URLSearchParams(location.search).get("v");
-const variant = VARIANTS[requested] ? requested : "original";
+const variant = VARIANTS[requested] ? requested : "b"; // B is the chosen design
 
 const state = {
   range: "1M",
@@ -188,7 +188,7 @@ function renderTotalNote() {
     note.append(chip);
   }
   if (variant === "e") {
-    note.append(el(`<span class="note-text">This view leaves out ${plural(count, "account")}</span>`));
+    note.append(el(`<span class="note-text">This view excludes ${plural(count, "account")}</span>`));
   }
 }
 
@@ -214,7 +214,7 @@ function renderBreakdown() {
 
 function accountRow(a, { card = false } = {}) {
   const counted = isCounted(a);
-  const tagText = variant === "e" ? "Not in this view" : "Not counted";
+  const tagText = variant === "e" ? "Not in this view" : "Excluded";
   const showTag = !counted && variant !== "c";
 
   const row = el(`
@@ -450,7 +450,7 @@ function openSheet({ title, initial, saveLabel, withName = false, nameValue = ""
           <input id="viewName" placeholder="My money" value="${nameValue}">
         </label>
         <p class="field-error" id="nameError" hidden>Give this view a name</p>` : ""}
-      <div class="sheet-preview">Net worth<strong id="sheetTotal"></strong><span id="sheetCount"></span></div>
+      <div class="sheet-preview"><strong id="sheetTotal"></strong><span id="sheetCount"></span></div>
       <div id="sheetList"></div>
     </div>
     <div class="sheet-foot">
@@ -461,7 +461,7 @@ function openSheet({ title, initial, saveLabel, withName = false, nameValue = ""
   const list = sheet.querySelector("#sheetList");
   const update = () => {
     sheet.querySelector("#sheetTotal").textContent = money(netWorth(draft));
-    sheet.querySelector("#sheetCount").textContent = draft.size ? `Leaves out ${plural(draft.size, "account")}` : "Includes every account";
+    sheet.querySelector("#sheetCount").textContent = draft.size ? `Excludes ${plural(draft.size, "account")}` : "";
     list.querySelectorAll(".check-row").forEach((row) => {
       const on = !draft.has(row.dataset.name);
       row.classList.toggle("is-off", !on);
@@ -521,7 +521,7 @@ $("sheetOverlay").addEventListener("click", (e) => {
 
 function openCustomizeSheet() {
   openSheet({
-    title: "Customize your net worth",
+    title: "Customize Net worth",
     initial: state.excluded,
     saveLabel: "Done",
     onSave: (set) => {
@@ -626,7 +626,7 @@ function renderDrawerExtra(account) {
   if (variant === "b") {
     if (isCounted(account)) return;
     const line = el(`
-      <div class="status-line">${ICONS.eyeOff}Not counted in your net worth
+      <div class="status-line">${ICONS.eyeOff}Excluded from your net worth
         <button class="link-btn">Change</button>
       </div>`);
     line.querySelector("button").addEventListener("click", () => {
@@ -668,14 +668,6 @@ document.addEventListener("keydown", (e) => {
   closeMenu();
 });
 
-// ---------- Prototype switcher ----------
-
-function renderSwitcher() {
-  $("switcher").innerHTML = Object.entries(VARIANTS)
-    .map(([key, item]) => `<a class="sw-btn${key === variant ? " is-active" : ""}" href="?v=${key}" title="${item.name}">${item.label}</a>`)
-    .join("") + `<a class="sw-btn" href="prototypes.html" title="All prototypes">All</a>`;
-}
-
 // ---------- Controls ----------
 
 $("hideBtn").addEventListener("click", () => {
@@ -691,8 +683,8 @@ $("sort").addEventListener("change", (e) => {
 // B: Customize is a page action, top right, like Account details on
 // other Wealthsimple pages. On mobile it is a circle button in the header.
 if (variant === "b") {
-  const desktop = el(`<button class="pill">${ICONS.sliders}Customize</button>`);
-  const mobile = el(`<button class="back-btn" aria-label="Customize your net worth">${ICONS.sliders}</button>`);
+  const desktop = el(`<button class="icon-btn" aria-label="Customize Net worth" title="Customize">${ICONS.sliders}</button>`);
+  const mobile = el(`<button class="back-btn" aria-label="Customize Net worth">${ICONS.sliders}</button>`);
   desktop.addEventListener("click", openCustomizeSheet);
   mobile.addEventListener("click", openCustomizeSheet);
   $("pageActions").append(desktop);
@@ -701,5 +693,4 @@ if (variant === "b") {
 
 // ---------- Go ----------
 
-renderSwitcher();
 renderAll();
