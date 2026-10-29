@@ -1,5 +1,7 @@
 # Wealthsimple net worth: practice copy
 
+> Concept case study by Audrée Lapierre. Not affiliated with Wealthsimple. All numbers are fictional.
+
 A copy of Wealthsimple's Net worth page, built to practice editing with Claude Code and Git.
 All the numbers are made up.
 
